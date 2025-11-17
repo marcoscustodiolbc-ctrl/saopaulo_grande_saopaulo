@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reestruturação Estratégica CarBank - São Paulo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8edf2 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            border-radius: 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(17, 153, 142, 0.3);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.5em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1em;
+            font-weight: 300;
+        }
+
+        .section {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #11998e;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1em;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+
+        .insight-box {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 20px 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border-left: 5px solid #0d7a6f;
+        }
+
+        .insight-box p {
+            color: white;
+            font-weight: 500;
+            line-height: 1.7;
+        }
+
+        .insight-box strong {
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        thead {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        th {
+            padding: 18px;
+            text-align: left;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95em;
+            letter-spacing: 0.5px;
+        }
+
+        td {
+            padding: 16px 18px;
+            border-bottom: 1px solid #ecf0f1;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        tbody tr:hover {
+            background: #f8f9fa;
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+            font-weight: 700;
+            background: #f8f9fa;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-sp1 {
+            border-top-color: #38ef7d;
+        }
+
+        .card-sp2 {
+            border-top-color: #4facfe;
+        }
+
+        .card-sp3 {
+            border-top-color: #ff8c42;
+        }
+
+        .card-title {
+            font-size: 2em;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .card-regions {
+            margin: 20px 0;
+        }
+
+        .card-regions h4 {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card-regions ul {
+            list-style: none;
+        }
+
+        .card-regions li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .card-regions li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #11998e;
+            font-weight: bold;
+        }
+
+        .card-strategy {
+            margin-top: 20px;
+            padding: 15px;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 10px;
+        }
+
+        .card-strategy p {
+            font-size: 0.9em;
+            color: #333;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .card-strategy strong {
+            color: #c0392b;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 20px rgba(17, 153, 142, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            font-weight: 400;
+            opacity: 0.95;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 25px 0;
+            text-align: center;
+        }
+
+        .formula {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #2c3e50;
+            font-family: 'Courier New', monospace;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+        }
+
+        .badge-success {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+        }
+
+        .gcm-distribution {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .gcm-item {
+            text-align: center;
+            padding: 20px;
+            min-width: 150px;
+        }
+
+        .gcm-number {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .gcm-label {
+            font-size: 1em;
+            color: #7f8c8d;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section {
+                padding: 25px;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Reestruturação Estratégica</h1>
+            <p>Capital e Grande São Paulo</p>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Cenário Atual e Oportunidade de Crescimento</h2>
+            <p class="section-subtitle">A Estrutura de Lojas Ativas em São Paulo</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filial</th>
+                        <th>Lojas</th>
+                        <th>Gravames</th>
+                        <th>Volume (R$)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SP1</strong></td>
+                        <td>443</td>
+                        <td>4.452</td>
+                        <td>314,5M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SP2</strong></td>
+                        <td>334</td>
+                        <td>4.724</td>
+                        <td>312,9M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>SP3</strong></td>
+                        <td>373</td>
+                        <td>4.404</td>
+                        <td>317,6M</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td>1.150</td>
+                        <td>13.580</td>
+                        <td>945,1M</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="insight-box">
+                <p><strong>Insight:</strong> A reestruturação propõe otimizar a cobertura e gestão das lojas ativas, garantindo foco no <strong>Share Gravames 12%</strong> e <strong>Volume Share 12%</strong> como métricas-chave de sucesso.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Nova Divisão Geográfica e Estrutura de Filiais</h2>
+            <p class="section-subtitle">Cobertura Otimizada para Maior Penetração de Mercado</p>
+
+            <div class="cards-container">
+                <div class="card card-sp1">
+                    <div class="card-title">SP1</div>
+                    <div class="card-regions">
+                        <h4>Regiões de Atuação</h4>
+                        <ul>
+                            <li>Zona Leste</li>
+                            <li>Zona Norte</li>
+                            <li>Guarulhos</li>
+                            <li>Centro</li>
+                        </ul>
+                    </div>
+                    <div class="card-strategy">
+                        <p><strong>Foco:</strong> Concentração na Capital e Região Metropolitana Norte</p>
+                    </div>
+                </div>
+
+                <div class="card card-sp2">
+                    <div class="card-title">SP2</div>
+                    <div class="card-regions">
+                        <h4>Regiões de Atuação</h4>
+                        <ul>
+                            <li>Vale do Paraíba</li>
+                            <li>Alto Tietê</li>
+                            <li>Santos/Guarujá</li>
+                            <li>Itanhaém</li>
+                        </ul>
+                    </div>
+                    <div class="card-strategy">
+                        <p><strong>Foco:</strong> Expansão e Consolidação no Interior e Litoral</p>
+                    </div>
+                </div>
+
+                <div class="card card-sp3">
+                    <div class="card-title">SP3</div>
+                    <div class="card-regions">
+                        <h4>Regiões de Atuação</h4>
+                        <ul>
+                            <li>Zona Sul</li>
+                            <li>Osasco</li>
+                            <li>ABC Paulista</li>
+                            <li>Região Metropolitana Sul</li>
+                        </ul>
+                    </div>
+                    <div class="card-strategy">
+                        <p><strong>Foco:</strong> Alta Densidade de Lojas e Potencial de Volume</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <p><strong>Separação Clara de Equipes:</strong> A nova estrutura garante que cada filial tenha equipes dedicadas e especializadas em suas respectivas áreas de atuação, evitando sobreposição e maximizando a eficiência da gestão operacional.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Dimensionamento do Quadro de GCMs</h2>
+            <p class="section-subtitle">Cálculo Baseado no Share de Gravames (12%)</p>
+
+            <div class="formula-box">
+                <p class="formula">GCMs Necessários = ⌈ Share Gravames 12% ÷ 50 ⌉</p>
+            </div>
+
+            <p style="margin: 20px 0; color: #555; text-align: center; font-weight: 500;">
+                O dimensionamento considera a capacidade de <strong>50 gravames por GCM</strong> sobre o volume de Share Gravames 12% de cada filial.
+            </p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Filial</th>
+                        <th>Share Gravames 12%</th>
+                        <th>Capacidade por GCM</th>
+                        <th>GCMs Necessários</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>SP1</strong></td>
+                        <td>534</td>
+                        <td>50</td>
+                        <td><span class="badge badge-primary">11</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SP2</strong></td>
+                        <td>567</td>
+                        <td>50</td>
+                        <td><span class="badge badge-primary">12</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>SP3</strong></td>
+                        <td>528</td>
+                        <td>50</td>
+                        <td><span class="badge badge-primary">11</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Total</strong></td>
+                        <td>1.629</td>
+                        <td>50</td>
+                        <td><span class="badge badge-success">34</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Insights e Totais</h2>
+            <p class="section-subtitle">Análise Estratégica</p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">34</div>
+                    <div class="stat-label">GCMs Totais</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">1.629</div>
+                    <div class="stat-label">Gravames (Share 12%)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">50</div>
+                    <div class="stat-label">Gravames por GCM</div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px;">
+                <h3 style="color: #11998e; font-weight: 700; margin-bottom: 20px; font-size: 1.3em;">Cobertura Completa do Share 12%</h3>
+                <p style="margin-bottom: 15px; color: #555; font-weight: 500;">Com <strong>34 GCMs</strong> distribuídos estrategicamente entre as três filiais, garantimos cobertura completa dos <strong>1.629 gravames</strong> projetados para o Share de 12%, com cada GCM responsável por até 50 gravames.</p>
+
+                <h3 style="color: #11998e; font-weight: 700; margin: 25px 0 20px; font-size: 1.3em;">Distribuição Equilibrada</h3>
+                <p style="margin-bottom: 15px; color: #555; font-weight: 500;">A alocação de GCMs por filial (SP1: 11, SP2: 12, SP3: 11) reflete o potencial de cada região e garante que nenhuma filial fique sobrecarregada, mantendo a qualidade do atendimento e a eficiência operacional.</p>
+
+                <h3 style="color: #11998e; font-weight: 700; margin: 25px 0 20px; font-size: 1.3em;">Alinhamento com Metas</h3>
+                <p style="color: #555; font-weight: 500;">O dimensionamento de 34 GCMs está perfeitamente alinhado com a meta de Share de 12%, garantindo recursos humanos suficientes e bem distribuídos para atingir e superar os objetivos operacionais.</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">Distribuição Estratégica do Quadro de GCMs</h2>
+            <p class="section-subtitle">Equilíbrio de Forças para o Crescimento Sustentável</p>
+
+            <div class="gcm-distribution">
+                <div class="gcm-item">
+                    <div class="gcm-number">11</div>
+                    <div class="gcm-label">SP1 (32,4%)</div>
+                </div>
+                <div class="gcm-item">
+                    <div class="gcm-number">12</div>
+                    <div class="gcm-label">SP2 (35,3%)</div>
+                </div>
+                <div class="gcm-item">
+                    <div class="gcm-number">11</div>
+                    <div class="gcm-label">SP3 (32,4%)</div>
+                </div>
+            </div>
+
+            <div class="insight-box">
+                <p><strong>Maior Concentração:</strong> SP2 recebe 35,3% dos GCMs (12 profissionais), refletindo o potencial de expansão e volume projetado para interior e litoral. SP1 e SP3 mantêm equilíbrio com 32,4% cada.</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
